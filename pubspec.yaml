@@ -38,6 +38,7 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   get: ^4.6.6
+  lottie: ^3.1.2
   
 dev_dependencies:
   flutter_test:
@@ -63,6 +64,7 @@ flutter:
   assets:
     - aset_media/gambar/
     - aset_media/suara/
+    - aset_media/ani_loti/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

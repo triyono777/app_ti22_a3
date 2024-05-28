@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 
 import 'home_screen.dart';
-
+import 'package:lottie/lottie.dart';
 
 
 
@@ -82,10 +82,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
               ),
               SizedBox(height: 20),
+              ElevatedButton(onPressed: (){
+                Get.to(()=>HomeScreen());
+              }, 
+              child: Lottie.asset('aset_media/ani_loti/attention.json',height: 50)),
               ElevatedButton(
                 onPressed: _login,
                 child: Text('Login'),
               ),
+
+              GestureDetector(
+                onTap: (){
+                  Get.to(()=>HomeScreen());
+                },
+                child: Lottie.asset('aset_media/ani_loti/arrow.json',height: 50))
             ],
           ),
         ),
