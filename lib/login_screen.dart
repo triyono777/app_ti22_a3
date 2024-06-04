@@ -6,8 +6,6 @@ import 'package:hive/hive.dart';
 import 'home_screen.dart';
 import 'package:lottie/lottie.dart';
 
-
-
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -16,27 +14,20 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
 
-  TextEditingController _username = TextEditingController() ;
+  TextEditingController _username = TextEditingController();
   TextEditingController _password = TextEditingController();
 
-  void _login() async{
+  void _login() async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-        var box = await Hive.openBox('userBox');
+      var box = await Hive.openBox('userBox');
 
-
-      if (_username.text=="budi" && _password.text=="1234"){
-        
-        Get.to(()=>HomeScreen());
+      if (_username.text == "budi" && _password.text == "1234") {
+        Get.off(() => HomeScreen());
         box.put('sudahLogin', true);
-         
-
-      }else{
-        
+      } else {
         Get.snackbar("info", "gagal login");
       }
-
-      
     }
   }
 
@@ -55,7 +46,6 @@ class _LoginScreenState extends State<LoginScreen> {
             children: <Widget>[
               TextFormField(
                 controller: _username,
-
                 decoration: InputDecoration(labelText: 'Username'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -82,20 +72,22 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
               ),
               SizedBox(height: 20),
-              ElevatedButton(onPressed: (){
-                Get.to(()=>HomeScreen());
-              }, 
-              child: Lottie.asset('aset_media/ani_loti/attention.json',height: 50)),
+              ElevatedButton(
+                  onPressed: () {
+                    Get.to(() => HomeScreen());
+                  },
+                  child: Lottie.asset('aset_media/ani_loti/attention.json',
+                      height: 50)),
               ElevatedButton(
                 onPressed: _login,
                 child: Text('Login'),
               ),
-
               GestureDetector(
-                onTap: (){
-                  Get.to(()=>HomeScreen());
-                },
-                child: Lottie.asset('aset_media/ani_loti/arrow.json',height: 50))
+                  onTap: () {
+                    Get.to(() => HomeScreen());
+                  },
+                  child: Lottie.asset('aset_media/ani_loti/arrow.json',
+                      height: 50))
             ],
           ),
         ),
