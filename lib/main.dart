@@ -8,6 +8,9 @@ import 'login_screen.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
+import 'splash_screen.dart';
+
+
 void main() async {
   await Hive.initFlutter();
   var box = await Hive.openBox('userBox');
@@ -25,7 +28,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
       ),
-      home: LoginScreen(),
+      home: SplashScreen(),
     );
   }
 }

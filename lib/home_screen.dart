@@ -2,6 +2,9 @@
 
 import 'package:app_ti22_a3/gambar_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:hive/hive.dart';
+import 'login_screen.dart';
 import 'tombol_helo.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -13,6 +16,14 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Home Screen'),
         backgroundColor: Colors.amber,
+        actions: [
+          IconButton(onPressed: ()async{
+            var box = await Hive.openBox('userBox');
+            // await box.clear();
+            await box.put("sudahLogin", false);
+            Get.off(()=>LoginScreen());
+          }, icon: Icon(Icons.logout))
+        ],
       ),
       body: ListView(
         children: [
